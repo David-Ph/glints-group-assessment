@@ -7,15 +7,20 @@ const CompanyController = require("../controller/companies");
 
 // ? import validators
 // ////////////////////
+const CompanyValidator = require("../middlewares/validators/companies");
 
 // ? set routers
 // //////////////
-router.get("/", CompanyController.getCompanies);
-router.post("/", CompanyController.createCompany);
-router.put("/:id", CompanyController.updateCompany);
-router.delete("/:id", CompanyController.deleteCompany);
+router.get("/", CompanyValidator.get, CompanyController.getCompanies);
+router.post("/", CompanyValidator.create, CompanyController.createCompany);
+router.put(
+  "/:id",
+  CompanyValidator.get,
+  CompanyValidator.update,
+  CompanyController.updateCompany
+);
+router.delete("/:id", CompanyValidator.get, CompanyController.deleteCompany);
 
 // ? export router
 //////////////////
 module.exports = router;
-//

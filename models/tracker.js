@@ -24,7 +24,7 @@ const trackerSchema = new mongoose.Schema(
         "rejected",
         "accepted",
       ],
-      default: "review",
+      default: "Review",
     },
   },
   {

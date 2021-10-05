@@ -7,13 +7,19 @@ const TrackerController = require("../controller/trackers");
 
 // ? import validators
 // ////////////////////
+const TrackerValidator = require("../middlewares/validators/trackers");
 
 // ? set routers
 // //////////////
-router.get("/", TrackerController.getTrackers);
-router.post("/", TrackerController.createTracker);
-router.put("/:id", TrackerController.updateTracker);
-router.delete("/:id", TrackerController.deleteTracker);
+router.get("/", TrackerValidator.get, TrackerController.getTrackers);
+router.post("/", TrackerValidator.create, TrackerController.createTracker);
+router.put(
+  "/:id",
+  TrackerValidator.get,
+  TrackerValidator.update,
+  TrackerController.updateTracker
+);
+router.delete("/:id", TrackerValidator.get, TrackerController.deleteTracker);
 
 // ? export router
 //////////////////

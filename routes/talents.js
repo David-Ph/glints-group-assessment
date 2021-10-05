@@ -7,13 +7,19 @@ const TalentController = require("../controller/talents");
 
 // ? import validators
 // ////////////////////
+const TalentValidator = require("../middlewares/validators/talents");
 
 // ? set routers
 // //////////////
-router.get("/", TalentController.getTalents);
-router.post("/", TalentController.createTalent);
-router.put("/:id", TalentController.updateTalent);
-router.delete("/:id", TalentController.deleteTalent);
+router.get("/", TalentValidator.get, TalentController.getTalents);
+router.post("/", TalentValidator.create, TalentController.createTalent);
+router.put(
+  "/:id",
+  TalentValidator.get,
+  TalentValidator.update,
+  TalentController.updateTalent
+);
+router.delete("/:id", TalentValidator.get, TalentController.deleteTalent);
 
 // ? export router
 //////////////////

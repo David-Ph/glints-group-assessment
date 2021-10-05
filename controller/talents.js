@@ -13,7 +13,7 @@ class TalentController {
       const skipCount = page > 0 ? (page - 1) * limit : 0;
 
       // find data
-      const data = await Talent.find(query)
+      const data = await Talent.find()
         .sort({ [sortField]: orderBy })
         .limit(limit)
         .skip(skipCount);

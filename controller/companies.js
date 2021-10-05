@@ -13,7 +13,7 @@ class CompanyController {
       const skipCount = page > 0 ? (page - 1) * limit : 0;
 
       // find data
-      const data = await Company.find(query)
+      const data = await Company.find()
         .sort({ [sortField]: orderBy })
         .limit(limit)
         .skip(skipCount);

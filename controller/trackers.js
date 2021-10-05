@@ -1,8 +1,13 @@
 const { Tracker } = require("../models");
 
 class TrackerController {
-  async getTalents(req, res, next) {
+  async getTrackers(req, res, next) {
     try {
+      // set up status filter
+      const query = {};
+
+      if (req.query.status) query.status = req.query.status;
+
       // sorting
       const sortField = req.query.sortBy || "createdAt";
       const orderBy = req.query.orderBy || "desc";

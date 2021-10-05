@@ -13,7 +13,7 @@ class PicController {
       const skipCount = page > 0 ? (page - 1) * limit : 0;
 
       // find data
-      const data = await Pic.find(query)
+      const data = await Pic.find()
         .sort({ [sortField]: orderBy })
         .limit(limit)
         .skip(skipCount);

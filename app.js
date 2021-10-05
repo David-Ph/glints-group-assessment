@@ -55,6 +55,10 @@ if (process.env.NODE_ENV === "development" || process.env.NODE_ENV === "test") {
 }
 // ? import routes
 // ////////////////
+const talentRouter = require("./routes/talents");
+const picRouter = require("./routes/pics");
+const companyRouter = require("./routes/companies");
+const trackerRouter = require("./routes/trackers");
 
 // ? import error handler
 // //////////////////////
@@ -70,6 +74,10 @@ app.use(hpp());
 
 // ? set routes
 // /////////////
+app.use("/talents", talentRouter);
+app.use("/pics", picRouter);
+app.use("/companies", companyRouter);
+app.use("/trackers", trackerRouter);
 
 app.all("*", async (req, res, next) => {
   try {

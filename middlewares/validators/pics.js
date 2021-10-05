@@ -74,7 +74,7 @@ class PicValidator {
       // find item first and fill it to missing req.body
       // this is to avoid user not sending a field when updating
       const findPic = await Pic.findOne({ _id: req.params.id });
-      if (!findItem) {
+      if (!findPic) {
         return next({ statusCode: 404, message: "Pic not found" });
       }
       req.body.name = req.body.name ?? findPic.name;

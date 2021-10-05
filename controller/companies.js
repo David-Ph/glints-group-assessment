@@ -5,7 +5,7 @@ class CompanyController {
     try {
       // sorting
       const sortField = req.query.sortBy || "name";
-      const orderBy = req.query.orderBy || "desc";
+      const orderBy = req.query.orderBy || "asc";
 
       // pagination
       const page = req.query.page;
@@ -22,7 +22,7 @@ class CompanyController {
         return next({ message: "No companies found", statusCode: 404 });
       }
 
-      res.status(200).json({ data });
+      res.status(200).json({ data, count: data.length });
     } catch (error) {
       next(error);
     }

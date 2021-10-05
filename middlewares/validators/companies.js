@@ -74,7 +74,7 @@ class CompanyValidator {
       // find item first and fill it to missing req.body
       // this is to avoid user not sending a field when updating
       const findCompany = await Company.findOne({ _id: req.params.id });
-      if (!findItem) {
+      if (!findCompany) {
         return next({ statusCode: 404, message: "Company not found" });
       }
       req.body.name = req.body.name ?? findCompany.name;

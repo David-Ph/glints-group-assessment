@@ -42,4 +42,6 @@ const trackerSchema = new mongoose.Schema(
   }
 );
 
+trackerSchema.index({ talent: 1, company: 1 }, { unique: true });
+
 module.exports = mongoose.model("Tracker", trackerSchema);

@@ -74,8 +74,8 @@ class TalentValidator {
       // find item first and fill it to missing req.body
       // this is to avoid user not sending a field when updating
       const findTalent = await Talent.findOne({ _id: req.params.id });
-      if (!findItem) {
-        return next({ statusCode: 404, message: "Pic not found" });
+      if (!findTalent) {
+        return next({ statusCode: 404, message: "Talent not found" });
       }
       req.body.name = req.body.name ?? findTalent.name;
       req.body.email = req.body.email ?? findTalent.email;

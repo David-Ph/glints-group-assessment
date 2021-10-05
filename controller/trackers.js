@@ -21,13 +21,18 @@ class TrackerController {
       const data = await Tracker.find(query)
         .sort({ [sortField]: orderBy })
         .limit(limit)
-        .skip(skipCount);
+        .skip(skipCount)
+        .populate("talent", "_id name email")
+        .populate("company", "_id name email")
+        .populate("pic", "_id name email");
+
+      const count = await Tracker.count(query);
 
       if (data.length === 0) {
         return next({ message: "No trackers found", statusCode: 404 });
       }
 
-      res.status(200).json({ data });
+      res.status(200).json({ data, count });
     } catch (error) {
       next(error);
     }
@@ -37,7 +42,12 @@ class TrackerController {
     try {
       const data = await Tracker.create(req.body);
 
-      res.status(201).json({ data });
+      const findData = await Tracker.findOne({ _id: data._id })
+        .populate("talent", "_id name email")
+        .populate("company", "_id name email")
+        .populate("pic", "_id name email");
+
+      res.status(201).json({ findData });
     } catch (error) {
       next(error);
     }
@@ -49,7 +59,10 @@ class TrackerController {
         { _id: req.params.id },
         req.body,
         { new: true }
-      );
+      )
+        .populate("talent", "_id name email")
+        .populate("company", "_id name email")
+        .populate("pic", "_id name email");
 
       res.status(201).json({ data });
     } catch (error) {

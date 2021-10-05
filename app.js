@@ -55,7 +55,6 @@ if (process.env.NODE_ENV === "development" || process.env.NODE_ENV === "test") {
 }
 // ? import routes
 // ////////////////
-const itemRouter = require("./routes/items");
 
 // ? import error handler
 // //////////////////////
@@ -71,10 +70,6 @@ app.use(hpp());
 
 // ? set routes
 // /////////////
-app.get("/", (req, res, next) => {
-  res.redirect("/items");
-});
-app.use("/items", itemRouter);
 
 app.all("*", async (req, res, next) => {
   try {

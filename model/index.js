@@ -10,3 +10,8 @@ const uri = mongoose
   })
   .then(() => console.log("MongoDB connected!"))
   .catch((err) => console.log(err));
+
+exports.Talent = require("./talent");
+exports.Pic = require("./pic");
+exports.Company = require("./company");
+exports.Tracker = require("./tracker");

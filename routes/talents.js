@@ -3,20 +3,17 @@ const router = express.Router();
 
 // ? import controllers
 // //////////////////////
+const TalentController = require("../controller/talents");
 
 // ? import validators
 // ////////////////////
 
 // ? set routers
 // //////////////
-router.get("/");
-router.get("/detail/:id");
-
-router.post("/");
-
-router.put("/:id");
-
-router.delete("/:id");
+router.get("/", TalentController.getTalents);
+router.post("/", TalentController.createTalent);
+router.put("/:id", TalentController.updateTalent);
+router.delete("/:id", TalentController.deleteTalent);
 
 // ? export router
 //////////////////

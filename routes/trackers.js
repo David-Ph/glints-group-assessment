@@ -3,20 +3,18 @@ const router = express.Router();
 
 // ? import controllers
 // //////////////////////
+const TrackerController = require("../controller/trackers");
 
 // ? import validators
 // ////////////////////
 
 // ? set routers
 // //////////////
-router.get("/");
-router.get("/detail/:id");
+router.get("/", TrackerController.getTrackers);
+router.post("/", TrackerController.createTracker);
+router.put("/:id", TrackerController.updateTracker);
+router.delete("/:id", TrackerController.deleteTracker);
 
-router.post("/");
-
-router.put("/:id");
-
-router.delete("/:id");
 // ? export router
 //////////////////
 module.exports = router;

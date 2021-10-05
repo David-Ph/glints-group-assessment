@@ -3,20 +3,18 @@ const router = express.Router();
 
 // ? import controllers
 // //////////////////////
+const PicController = require("../controller/pics");
 
 // ? import validators
 // ////////////////////
 
 // ? set routers
 // //////////////
-router.get("/");
-router.get("/detail/:id");
+router.get("/", PicController.getPics);
+router.post("/", PicController.createPic);
+router.put("/:id", PicController.updatePic);
+router.delete("/:id", PicController.deletePic);
 
-router.post("/");
-
-router.put("/:id");
-
-router.delete("/:id");
 // ? export router
 //////////////////
 module.exports = router;

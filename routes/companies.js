@@ -3,20 +3,18 @@ const router = express.Router();
 
 // ? import controllers
 // //////////////////////
+const CompanyController = require("../controller/companies");
 
 // ? import validators
 // ////////////////////
 
 // ? set routers
 // //////////////
-router.get("/");
-router.get("/detail/:id");
+router.get("/", CompanyController.getCompanies);
+router.post("/", CompanyController.createCompany);
+router.put("/:id", CompanyController.updateCompany);
+router.delete("/:id", CompanyController.deleteCompany);
 
-router.post("/");
-
-router.put("/:id");
-
-router.delete("/:id");
 // ? export router
 //////////////////
 module.exports = router;

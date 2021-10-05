@@ -1,0 +1,37 @@
+{
+  "name": "group-assessment",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "NODE_ENV=test jest --testTimeout=60000 --coverage --forceExit",
+    "dev": "NODE_ENV=development node app.js",
+    "start": "NODE_ENV=production node app.js",
+    "nodemon": "NODE_ENV=development nodemon app.js",
+    "seed:dev": "NODE_ENV=development node seeders add",
+    "seed:dev:remove": "NODE_ENV=development node seeders remove",
+    "seed:test": "NODE_ENV=test node seeders add",
+    "seed:test:remove": "NODE_ENV=test node seeders remove"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "faker": "^5.5.3",
+    "jest": "^27.2.4",
+    "nodemon": "^2.0.13",
+    "supertest": "^6.1.6"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-mongo-sanitize": "^2.1.0",
+    "helmet": "^4.6.0",
+    "hpp": "^0.2.3",
+    "mongoose": "^6.0.9",
+    "morgan": "^1.10.0",
+    "validator": "^13.6.0",
+    "xss-clean": "^0.1.1"
+  }
+}

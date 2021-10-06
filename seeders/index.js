@@ -28,3 +28,5 @@ if (process.argv[2] === "add") {
     process.exit(0);
   });
 }
+
+module.exports = { add, remove };

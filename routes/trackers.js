@@ -20,7 +20,7 @@ router.put(
   TrackerController.updateTracker
 );
 router.delete("/:id", TrackerValidator.get, TrackerController.deleteTracker);
-
+router.get("/status", TrackerController.getStatus);
 // ? export router
 //////////////////
 module.exports = router;

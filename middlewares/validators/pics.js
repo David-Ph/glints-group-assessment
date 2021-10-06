@@ -1,4 +1,4 @@
-const { Pic } = require("../../models");
+const { Pic, Tracker } = require("../../models");
 const mongoose = require("mongoose");
 const validator = require("validator");
 
@@ -101,6 +101,25 @@ class PicValidator {
       if (errorMessages.length > 0) {
         return next({ statusCode: 400, messages: errorMessages });
       }
+      next();
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  async delete(req, res, next) {
+    try {
+      const findTracker = await Tracker.find({
+        pic: req.params.id,
+      });
+
+      if (findTracker.length > 0) {
+        return next({
+          statusCode: 400,
+          message: "Can't delete. PIC is in a tracker",
+        });
+      }
+
       next();
     } catch (error) {
       next(error);

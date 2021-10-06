@@ -19,7 +19,12 @@ router.put(
   CompanyValidator.update,
   CompanyController.updateCompany
 );
-router.delete("/:id", CompanyValidator.get, CompanyController.deleteCompany);
+router.delete(
+  "/:id",
+  CompanyValidator.get,
+  CompanyValidator.delete,
+  CompanyController.deleteCompany
+);
 
 // ? export router
 //////////////////

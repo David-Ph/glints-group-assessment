@@ -19,7 +19,12 @@ router.put(
   TalentValidator.update,
   TalentController.updateTalent
 );
-router.delete("/:id", TalentValidator.get, TalentController.deleteTalent);
+router.delete(
+  "/:id",
+  TalentValidator.get,
+  TalentValidator.delete,
+  TalentController.deleteTalent
+);
 
 // ? export router
 //////////////////

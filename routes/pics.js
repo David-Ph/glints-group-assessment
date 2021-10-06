@@ -19,7 +19,12 @@ router.put(
   PicValidator.update,
   PicController.updatePic
 );
-router.delete("/:id", PicValidator.get, PicController.deletePic);
+router.delete(
+  "/:id",
+  PicValidator.get,
+  PicValidator.delete,
+  PicController.deletePic
+);
 
 // ? export router
 //////////////////

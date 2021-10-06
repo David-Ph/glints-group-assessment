@@ -1,4 +1,4 @@
-const { Talent } = require("../../models");
+const { Talent, Tracker } = require("../../models");
 const mongoose = require("mongoose");
 const validator = require("validator");
 
@@ -101,6 +101,25 @@ class TalentValidator {
       if (errorMessages.length > 0) {
         return next({ statusCode: 400, messages: errorMessages });
       }
+      next();
+    } catch (error) {
+      next(error);
+    }
+  }
+
+  async delete(req, res, next) {
+    try {
+      const findTracker = await Tracker.find({
+        talent: req.params.id,
+      });
+
+      if (findTracker.length > 0) {
+        return next({
+          statusCode: 400,
+          message: "Can't delete. Talent is in a tracker",
+        });
+      }
+
       next();
     } catch (error) {
       next(error);

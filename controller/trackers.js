@@ -1,6 +1,15 @@
 const { Tracker } = require("../models");
+const trackerStatus = require("../config/status.json");
 
 class TrackerController {
+  async getStatus(req, res, next) {
+    try {
+      res.send(trackerStatus);
+    } catch (error) {
+      next(error);
+    }
+  }
+
   async getTrackers(req, res, next) {
     try {
       // set up status filter

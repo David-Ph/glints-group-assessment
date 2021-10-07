@@ -18,11 +18,13 @@ class TalentController {
         .limit(limit)
         .skip(skipCount);
 
+      const count = await Talent.count();
+
       if (data.length === 0) {
         return next({ message: "No talents found", statusCode: 404 });
       }
 
-      res.status(200).json({ data, count: data.length });
+      res.status(200).json({ data, count });
     } catch (error) {
       next(error);
     }
